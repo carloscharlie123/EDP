@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+import java.lang.*;
+
+public class main {
+	public static void main(String [] args) {
+    	Result result = JUnitCore.runClasses(TestDiccionario.class);
+    	for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+        System.out.println("Total tests ejecutados: " + result.getRunCount());
+        System.out.println("Total tests fallidos: " + result.getFailureCount());
+        System.out.println("Total tests ignorados: " + result.getIgnoreCount());
+        if (result.wasSuccessful()) System.out.println("Los tests se han ejecutado correctamente.");
+        
+    }
+}
