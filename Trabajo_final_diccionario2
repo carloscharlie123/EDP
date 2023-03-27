@@ -70,37 +70,38 @@ public class HashDictionary {
 ---------------------------------------------------------------------------------------------------------------------
 
 import org.junit.Assert;
+import java.util.Stack;
 
 public class HashDictionaryTest {
 
     public static void main(String[] args) {
-        HashDictionary dict = new HashDictionary(10);
-        dict.insert("key1", "value1");
-        dict.insert("key2", "value2");
-        dict.insert("key3", "value3");
+        Diccionario dict = new Diccionario();
+        dict.insertar("key1", "value1");
+        dict.insertar("key2", "value2");
+        dict.insertar("key3", "value3");
 
         // Prueba de búsqueda exitosa
-        Assert.assertEquals("value1", dict.search("key1"));
-        Assert.assertEquals("value2", dict.search("key2"));
-        Assert.assertEquals("value3", dict.search("key3"));
+        Assert.assertEquals("value1", dict.buscar("key1"));
+        Assert.assertEquals("value2", dict.buscar("key2"));
+        Assert.assertEquals("value3", dict.buscar("key3"));
 
         // Prueba de búsqueda fallida
-        Assert.assertNull(dict.search("key4"));
+        Assert.assertNull(dict.buscar("key4"));
 
         // Prueba de eliminación exitosa
-        dict.delete("key2");
-        Assert.assertNull(dict.search("key2"));
+        dict.eliminar("key2");
+        Assert.assertNull(dict.buscar("key2"));
 
         // Prueba de inserción con colisión
-        dict.insert("key4", "value4");
-        dict.insert("key5", "value5");
-        dict.insert("key6", "value6");
-        dict.insert("key7", "value7");
-        dict.insert("key8", "value8");
-        dict.insert("key9", "value9");
-        dict.insert("key10", "value10");
-        dict.insert("key11", "value11");
-        dict.insert("key12", "value12");
-        Assert.assertEquals("value12", dict.search("key12"));
+        dict.insertar("key4", "value4");
+        dict.insertar("key5", "value5");
+        dict.insertar("key6", "value6");
+        dict.insertar("key7", "value7");
+        dict.insertar("key8", "value8");
+        dict.insertar("key9", "value9");
+        dict.insertar("key10", "value10");
+        dict.insertar("key11", "value11");
+        dict.insertar("key12", "value12");
+        Assert.assertEquals("value12", dict.buscar("key12"));
     }
 }
