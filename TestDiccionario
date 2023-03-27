@@ -1,0 +1,56 @@
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+import static org.junit.Assert.*;
+
+public class TestDiccionario {
+  
+    @Test
+    public void testinsertarybuscar(){
+    	Diccionario dict = new Diccionario();
+    	dict.insertar("key1", "value1");
+        dict.insertar("key2", "value2");
+        dict.insertar("key3", "value3");
+        assertEquals("value1", dict.buscar("key1"));
+        assertEquals("value2", dict.buscar("key2"));
+        assertEquals("value3", dict.buscar("key3"));
+    }
+    
+    @Test
+    public void testclaves(){
+    	Diccionario dict = new Diccionario();
+    	dict.insertar("key1", "value1");
+        dict.insertar("key2", "value2");
+        dict.insertar("key3", "value3");
+        assertNotNull(dict.buscar("key1"));
+        assertNotNull(dict.buscar("key2"));
+        assertNotNull(dict.buscar("key3"));
+        assertNotNull(dict.claves());
+        assertTrue(dict.contains("key1"));
+        assertTrue(dict.contains("key2"));
+        assertTrue(dict.contains("key3"));
+    }
+    
+    @Test
+    public void testvalues() {
+    	Diccionario dict = new Diccionario();
+    	dict.insertar("key1", "value1");
+        dict.insertar("key2", "value2");
+        dict.insertar("key3", "value3");
+        assertNotNull(dict.values());
+    }
+        
+    @Test
+    public void testeliminar() {
+        Diccionario dict = new Diccionario();
+        dict.insertar("key1", "value1");
+        dict.insertar("key2", "value2");
+        dict.insertar("key3", "value3");
+        dict.eliminar("key2");
+        assertEquals("value1", dict.buscar("key1"));
+        assertNull(dict.buscar("key2"));
+        assertEquals("value3", dict.buscar("key3"));
+    }
+}
