@@ -56,24 +56,26 @@ public class Diccionario {
         return null;
     }
 
-    public void eliminar(String clave) {
+    public String eliminar(String clave) {
         // Obtener el índice hash de la clave
         int indice = obtenerIndiceHash(clave);
-
+        String valor = "";
         // Recorrer la tabla hash hasta encontrar la clave buscada
         while (claves[indice] != null) {
             if (claves[indice].equals(clave)) {
                 // Eliminar la clave y valor del índice encontrado
+            	valor = valores[indice];
                 claves[indice] = null;
                 valores[indice] = null;
                 numeroElementos--;
                 // Reorganizar la tabla hash para evitar huecos vacíos
                 reorganizarTablaHash(indice);
-                return;
+                return valor;
             }
             // Si el índice está ocupado por otra clave, pasar al siguiente
             indice = (indice + 1) % claves.length;
         }
+        return valor;
     }
     public void mostrar() {
         for (int i = 0; i < claves.length; i++) {
